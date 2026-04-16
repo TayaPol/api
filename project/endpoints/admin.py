@@ -19,7 +19,7 @@ def del_user(data_del: int, current_user: tuple = Depends(admin)):
     logger.info(f"{user_role} {user_email} удалил {id_user_del.email}")
     return f"Вы {user_role} {user_email} удалили {id_user_del.email}"
 
-# админский эндпоинт смена роли
+# админский эндпоинт смена роли"
 @router.post("/role_change", tags=["Админка"])
 def change_role(data_user_id: int, data_role_new = UR ,current_user: tuple = Depends(admin)):
     user_id, user_email, user_role = current_user
