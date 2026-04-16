@@ -11,8 +11,8 @@ load_dotenv()
 # Строковые переменные из .env
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
-REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///apitest.db")
+REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS"))
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Объекты, создаваемые в коде (не из .env)
 security = HTTPBearer()
