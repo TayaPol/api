@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple WebSocket Chat</title>
+</head>
+<body>
+    <h1>Чат на WebSocket</h1>
+    <div id="messages"></div>
+    <input id="messageInput" type="text" placeholder="Введите сообщение" autocomplete="off"/>
+    <button onclick="sendMessage()">Отправить</button>
+
+    <script>
+        const ws = new WebSocket("/ws/chat");
+
+        // Обработка нового сообщения от сервера
+        ws.onmessage = (event) => {
+            const messages = document.getElementById("messages");
+            const message = document.createElement("div");
+            message.textContent = event.data;
+            messages.appendChild(message);
+        };
+
+        // Отправка сообщения на сервер
+        function sendMessage() {
+            const input = document.getElementById("messageInput");
+            ws.send(input.value);
+            input.value = '';  // Очищаем поле ввода после отправки
+        }
+    </script>
+</body>
+</html>

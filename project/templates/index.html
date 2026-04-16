@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FastAPI</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<center>
+    <div id="message"></div>
+     <p>
+        Введите почту: <br />
+        <input name="email" id="email" />
+    </p>
+     <p>
+        Введите пароль: <br />
+        <input name="password" id="password" type = "password"/>
+    </p>
+    <button onclick="send_auth()">Войти</button>
+    <button onclick="send()">Зарегистрироваться</button>
+<script>
+    async function send(){
+
+        // получаем введеное в поле имя и пароль
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // отправляем запрос
+        const response = await fetch("/auth", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById("message").textContent = data.message;
+            }
+            else
+                alert("Проверьте корректность почты, пароль состоит не менее чем из восьми символов!")
+                console.log(response);
+    }
+
+    async function send_auth(){
+
+        // получаем введеное в поле имя и пароль
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // отправляем запрос
+        const response = await fetch("/entrance", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                alert("Вы успешно зашли в аккаунт!")
+                window.location.href = "/chat"
+<!--                document.getElementById("message").textContent = data.message;-->
+
+
+            }
+            else
+                console.log(response);
+    }
+</script>
+</center>
+</body>
+</html>
