@@ -34,16 +34,16 @@ app.include_router(chat_router)
 # Эндпоинты для HTML-страниц (они лежат в папке templates)
 @app.get("/")
 def root():
-    return FileResponse("templates/index.html")
+    return FileResponse("project/templates/index.html")
 
 @app.get("/look_post")
 def look_post():
-    return FileResponse("templates/index2.html")
+    return FileResponse("project/templates/index2.html")
 
 
 @app.get("/chat")
 def chat_page():
-    return FileResponse("templates/index3.html")
+    return FileResponse("project/templates/index3.html")
 
 
 

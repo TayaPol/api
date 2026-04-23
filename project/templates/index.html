@@ -4,19 +4,51 @@
     <title>FastAPI</title>
     <meta charset="utf-8" />
 </head>
-<body>
-<center>
+<body style="linear-gradient: inherit;background: ;background-image: url(https://7themes.su/_ph/23/107313157.jpg);">
+<div class="flex-container" style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+">
+
+    <center style="
+    /* border: #9b3a9a; */
+    border: 4px outset;
+    padding: 15px;
+    /* BACKGROUND-COLOR: brown; */
+    text-align: center;
+"><h2 style="
+    font-family: sans-serif;
+    color: #e7e7e7;
+">Вход</h2>
+
     <div id="message"></div>
-     <p>
-        Введите почту: <br />
-        <input name="email" id="email" />
+
+<p style="
+    text-align: center;
+    font-family: sans-serif;
+    color: #e7e7e7;
+    /* text-align: center; */
+">
+        Введите почту: <br style="">
+        <input name="email" id="email" style="
+    color: #e7e7e7;
+    background: #060606;
+">
     </p>
-     <p>
-        Введите пароль: <br />
-        <input name="password" id="password" type = "password"/>
+     <p style="
+    font-family: sans-serif;
+    color: #e7e7e7;
+">
+        Введите пароль: <br>
+        <input name="password" id="password" type="password" style="
+    color: #e7e7e7;
+    background: #060606;
+">
     </p>
-    <button onclick="send_auth()">Войти</button>
-    <button onclick="send()">Зарегистрироваться</button>
+    <button style="border-radius: 5px;width: 100%;/* max-width: fit-content; */font-family: sans-serif;background: #e79b23;display: block;margin: 10px auto;" onclick="send_auth()">Войти</button>
+    <button style="border-radius: 5px;width: 100%;font-family: sans-serif;background: #e7e7e7;display: block;margin: 10px auto;" onclick="send()">Зарегистрироваться</button>
 <script>
     async function send(){
 
@@ -25,7 +57,7 @@
         const password = document.getElementById("password").value;
 
         // отправляем запрос
-        const response = await fetch("/auth", {
+        const response = await fetch("/auth/auth", {
                 method: "POST",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -49,7 +81,7 @@
         const password = document.getElementById("password").value;
 
         // отправляем запрос
-        const response = await fetch("/entrance", {
+        const response = await fetch("/auth/entrance", {
                 method: "POST",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -71,5 +103,6 @@
     }
 </script>
 </center>
+</div>
 </body>
 </html>
